@@ -18,6 +18,7 @@ var UI = {
 	});
 
 	$("#combo > div").on("click", function(){
+	    UI.alpha = UI.beta = UI.gamma = undefined; // reset calibration
 	    var color = $(this).css("backgroundColor") + "";
 	    color = color.substring(4, color.length -1).split(", ");
 	    color = {
@@ -69,7 +70,7 @@ var UI = {
 	    v: this.hsv.v
 	}
 
-	hsv.h = hsv.h + (this.hsvGap.h * diff);
+	hsv.h = (hsv.h + (this.hsvGap.h * diff)) % 1;
 	hsv.s = hsv.s + (this.hsvGap.s * diff);
 	hsv.v = hsv.v + (this.hsvGap.v * diff);
 
@@ -103,13 +104,13 @@ var UI = {
     move: function(o) {
 
 	if(this.mode === "color"){
-	    this.colorShifter("alpha", "h", o);
+	    this.colorShifter("beta", "h", o);
 	    this.colorShifter("beta", "s", o);
 	    this.colorShifter("gamma", "v", o);
 
 	    this.updateColor(rgb2hex(hsv2rgb(this.hsv)), $("#color"), $("#hex"));
 	}else{
-	    this.gapShifter("alpha", "h", o);
+	    this.gapShifter("beta", "h", o);
 	    this.gapShifter("beta", "s", o);
 	    this.gapShifter("gamma", "v", o);
 
