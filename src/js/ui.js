@@ -103,8 +103,8 @@ var UI = {
 
     colorShifter: function(d, v, o) {
 	if(Math.abs(o[d] - this[d]) > 8){
-	    if((o[d] - this[d]) < 0) UI.colorShift(v, 0.0025);
-	    if((o[d] - this[d]) > 0) UI.colorShift(v, -0.0025);
+	    if((o[d] - this[d]) < 0) UI.colorShift(v, 0.001);
+	    if((o[d] - this[d]) > 0) UI.colorShift(v, -0.001);
 	}
     },
 
@@ -152,6 +152,7 @@ var UI = {
 	    "borderRadius": h_hex + "px"
 	});
 
+	$("body").css("fontSize", h/100 + "px");
 
 	$("#menu, #color, #combo")
 	    .height(h)
