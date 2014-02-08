@@ -1,0 +1,53 @@
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+}
+
+#combo, #color{
+    margin: 0;
+    padding: 0;
+}
+
+#hex{
+    display: block;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    text-align: center;
+    line-height: 150px;
+    text-transform: uppercase;
+    border-radius: 75px;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+#color >  p, #combo > p{
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    bottom: 10px;
+    color: #fff;
+    text-shadow: 0px 0px 5px black;
+    opacity: 0.5;
+}
+
+#combo div{
+    height: 20%;
+    margin: 0;
+    padding: 0;
+}
+
+#combo > div > p{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    display: block;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    height: 100%;
+}
