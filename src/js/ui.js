@@ -84,7 +84,13 @@ var UI = {
     },
 
     setCalibration: function(o) {
-	if(this.gamma === undefined || this.gamma === null){
+	if(this.alpha === undefined ||
+	   this.alpha === null ||
+	   this.beta === undefined ||
+	   this.beta === null ||
+	   this.gamma === undefined ||
+	   this.gamma === null
+	  ){
 	    this.alpha = o.alpha;
 	    this.beta = o.beta;
 	    this.gamma = o.gamma;
@@ -95,15 +101,20 @@ var UI = {
     },
 
     move: function(o) {
+
+	$("#color > p").html( o.alpha + " <br> " + o.beta + " <br> " + o.gamma);
+
 	if(this.mode === "color"){
-	    this.colorShifter("gamma", "h", o);
-	    this.colorShifter("alpha", "s", o);
-	    this.colorShifter("beta", "v", o);
+	    this.colorShifter("alpha", "h", o);
+	    this.colorShifter("beta", "s", o);
+	    this.colorShifter("gamma", "v", o);
+
 	    this.updateColor(rgb2hex(hsv2rgb(this.hsv)), $("#color"), $("#hex"));
 	}else{
-	    this.gapShifter("gamma", "h", o);
-	    this.gapShifter("alpha", "s", o);
-	    this.gapShifter("beta", "v", o);
+	    this.gapShifter("alpha", "h", o);
+	    this.gapShifter("beta", "s", o);
+	    this.gapShifter("gamma", "v", o);
+
 	    this.updatePalette();
 	}
     },
