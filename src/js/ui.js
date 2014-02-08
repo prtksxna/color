@@ -1,6 +1,13 @@
 var UI = {
 
     init: function() {
+
+	gyro.frequency = 1;
+	gyro.startTracking(function(o) {
+	    UI.setCalibration(o);
+	    UI.move(o);
+	});
+
 	$("#combo").hide();
 
 	$("#color").on("click", function(){
@@ -162,16 +169,10 @@ var UI = {
     }
 };
 
-$(function(){
+$(window).bind("load", function(){
     UI.init();
     UI.resize();
     $(window).on("resize", function(){
 	UI.resize();
     });
-});
-
-gyro.frequency = 1;
-gyro.startTracking(function(o) {
-    UI.setCalibration(o);
-    UI.move(o);
 });
