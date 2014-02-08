@@ -13,6 +13,7 @@ var UI = {
 	$("#color").on("click", function(){
 	    $("#color").hide();
 	    $("#combo").show();
+	    UI.alpha = UI.beta = UI.gamma = undefined; // reset calibration
 	    UI.mode = "combo";
 	    UI.updatePalette();
 	});
