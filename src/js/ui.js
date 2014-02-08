@@ -102,8 +102,6 @@ var UI = {
 
     move: function(o) {
 
-	$("#color > p").html( o.alpha + " <br> " + o.beta + " <br> " + o.gamma);
-
 	if(this.mode === "color"){
 	    this.colorShifter("alpha", "h", o);
 	    this.colorShifter("beta", "s", o);
@@ -120,7 +118,7 @@ var UI = {
     },
 
     colorShifter: function(d, v, o) {
-	if(Math.abs(o[d] - this[d]) > 8){
+	if(Math.abs(o[d] - this[d]) > 12){
 	    if((o[d] - this[d]) < 0) UI.colorShift(v, 0.001);
 	    if((o[d] - this[d]) > 0) UI.colorShift(v, -0.001);
 	}
@@ -134,7 +132,7 @@ var UI = {
 
 
     gapShifter: function(d, v, o) {
-	if(Math.abs(o[d] - this[d]) > 8){
+	if(Math.abs(o[d] - this[d]) > 12){
 	    if((o[d] - this[d]) < 0) UI.gapShift(v,  0.00025);
 	    if((o[d] - this[d]) > 0) UI.gapShift(v, -0.00025);
 	}
