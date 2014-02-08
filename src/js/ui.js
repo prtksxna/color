@@ -90,19 +90,19 @@ var UI = {
     move: function(o) {
 	if(this.mode === "color"){
 	    this.colorShifter("gamma", "h", o);
-	    this.colorShifter("beta", "s", o);
-	    this.colorShifter("alpha", "v", o);
+	    this.colorShifter("alpha", "s", o);
+	    this.colorShifter("beta", "v", o);
 	    this.updateColor(rgb2hex(hsv2rgb(this.hsv)), $("#color"), $("#hex"));
 	}else{
 	    this.gapShifter("gamma", "h", o);
-	    this.gapShifter("beta", "s", o);
-	    this.gapShifter("alpha", "v", o);
+	    this.gapShifter("alpha", "s", o);
+	    this.gapShifter("beta", "v", o);
 	    this.updatePalette();
 	}
     },
 
     colorShifter: function(d, v, o) {
-	if(Math.abs(o[d] - this[d]) > 4){
+	if(Math.abs(o[d] - this[d]) > 8){
 	    if((o[d] - this[d]) < 0) UI.colorShift(v, 0.0025);
 	    if((o[d] - this[d]) > 0) UI.colorShift(v, -0.0025);
 	}
@@ -116,7 +116,7 @@ var UI = {
 
 
     gapShifter: function(d, v, o) {
-	if(Math.abs(o[d] - this[d]) > 4){
+	if(Math.abs(o[d] - this[d]) > 8){
 	    if((o[d] - this[d]) < 0) UI.gapShift(v,  0.00025);
 	    if((o[d] - this[d]) > 0) UI.gapShift(v, -0.00025);
 	}
