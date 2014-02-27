@@ -1,5 +1,9 @@
 (function (color) {
 
+    /**
+     * @class color
+     * Utility functions to convert color formats
+     */
     color.color = {};
 
     /**
@@ -21,7 +25,7 @@
 
     /**
      * @method hex2rgb
-     * @param {String} hex #000000
+     * @param {String} hex 000000
      * @return {Object} rgb {r:0, g:0, b: 0}
      */
     color.color.hex2rgb = function (hex) {
@@ -42,7 +46,7 @@
     }
 
     /**
-     * @methof rgb2hsv
+     * @method rgb2hsv
      * @param {Object} rgb {r:0, g:0, b: 0}
      * @return {Object} hsv {h: 0, s: 0, v: 0}
      */
