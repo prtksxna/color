@@ -1,51 +1,86 @@
 (function (color) {
 
-    /*
-     * @class Palette
+    /**
+     * @class color.Palette
      * Creating palettes based on root color
+     * @singleton
      */
     color.Palette = {};
 
-    /*
+    /**
+     * @property {Number} speed
+     * The speed at which the gap increases
+     */
+    color.Picker.speed = 0.00025;
+
+    /**
+     * @property {Number} limit
+     * The maximum acceptable gap
+     */
+    color.Picker.gap = 0.3;
+
+    /**
+     * @property {Object} hsvGap
+     * The gap between the colors
+     */
+    color.Picker.hsvGap = {h: 0, s: 0, v: 0};
+
+
+    /**
      * @method checkGyro
      * Checks if the device has moved enough in an axiss
      * to call the changeGap method
+     * @param {String} a The angle of rotation of device
+     * @param {String} p Which one of h/s/v will this affect
+     * @param {Object} o The gyroscope object
      */
-    color.Palette.checkGyro = function (d, v, o) {
-        if(Math.abs(o[d] - this[d]) > 12){
-            if((o[d] - this[d]) < 0) UI.gapShift(v,  0.00025);
-            if((o[d] - this[d]) > 0) UI.gapShift(v, -0.00025);
+    color.Palette.checkGyro = function (a, p, o) {
+        if(Math.abs(o[a] - color.Gyro[a]) > color.angleThreshold){
+            if((o[a] - color.Gyro[a]) < 0) this.changeGap(p, this.speed);
+            if((o[a] - color.Gyro[a]) > 0) this.changeGap(p, -this.speed);
         }
     }
 
-    /*
+    /**
      * @method changeGap
      * Shift the pallete if its tilted enough
+     * @param {String} p The property h/s/v that will change
+     * @param {String} s The amount the property will change
      */
-    color.Pallete.changeGap = function (p,v) {
-        this.hsvGap[p] = this.hsvGap[p] + v;
-        this.hsvGap[p] = (this.hsvGap[p] >= 0.3) ? 0.3 : this.hsvGap[p];
-        this.hsvGap[p] = (this.hsvGap[p] <= -0.3) ? -0.3 : this.hsvGap[p];
+    color.Pallete.changeGap = function (p, s) {
+        this.hsvGap[p] = this.hsvGap[p] + s;
+        this.hsvGap[p] = (this.hsvGap[p] >= this.limit) ? this.limit : this.hsvGap[p];
+        this.hsvGap[p] = (this.hsvGap[p] <= -this.limit) ? -this.limit : this.hsvGap[p];
     }
 
-    /*
+    /**
      * @method updatePalette
      * Update the palette on the interface
      */
     color.Palette.updatePalette = function () {
         var p = $("#combo div");
 
-        this.updateColor(this.paletteColor(2), $(p[0]), $(p[0]).find("p"));
-        this.updateColor(this.paletteColor(1), $(p[1]), $(p[1]).find("p"));
-        this.updateColor(rgb2hex(hsv2rgb(this.hsv)), $(p[2]), $(p[2]).find("p"));
-        this.updateColor(this.paletteColor(-1), $(p[3]), $(p[3]).find("p"));
-        this.updateColor(this.paletteColor(-2), $(p[4]), $(p[4]).find("p"));
+        color.updateColor(this.computePalette(2), $(p[0]), $(p[0]).find("p"));
+        color.updateColor(this.computePalette(1), $(p[1]), $(p[1]).find("p"));
+
+        color.updateColor(
+            color.Converter.rgb2hex(
+                color.Converter.hsv2rgb(this.hsv)
+            ),
+            $(p[2]),
+            $(p[2]).find("p")
+        );
+
+        color.updateColor(this.computePalette(-1), $(p[3]), $(p[3]).find("p"));
+        color.updateColor(this.computePalette(-2), $(p[4]), $(p[4]).find("p"));
     }
 
 
-    /*
+    /**
      * @method computePalette
      * Compute the color based on distance from the root color
+     * @param {Number} diff The distance from the root color
+     * @return {String} The color in hexadecimal
      */
     color.Palette.computePalette = function (diff) {
         var hsv = {
@@ -65,7 +100,9 @@
         hsv.v = (hsv.v < 0) ? 0 : hsv.v;
 
 
-        return rgb2hex(hsv2rgb(hsv));
+        return color.Converter.rgb2hex(
+            color.Converter.hsv2rgb(hsv)
+        );
     }
 
 })(color);

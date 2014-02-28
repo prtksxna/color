@@ -1,17 +1,18 @@
 (function (color) {
 
     /**
-     * @class Color
+     * @class color.Converter
      * Utility functions to convert color formats
+     * @singleton
      */
-    color.Color = {};
+    color.Converter = {};
 
     /**
      * @method rgb2hex
      * @param {Object} rgb {r: 0, g: 0, b: 0}
      * @return {String} hex #000000
      */
-    color.Color.rgb2hex = function (rgb) {
+    color.Converter.rgb2hex = function (rgb) {
         r = rgb.r.toString(16);
         g = rgb.g.toString(16);
         b = rgb.b.toString(16);
@@ -28,7 +29,7 @@
      * @param {String} hex 000000
      * @return {Object} rgb {r:0, g:0, b: 0}
      */
-    color.Color.hex2rgb = function (hex) {
+    color.Converter.hex2rgb = function (hex) {
         hex = hex.substring(1);
         var r = hex[0] + hex[1];
         var g = hex[2] + hex[3];
@@ -50,7 +51,7 @@
      * @param {Object} rgb {r:0, g:0, b: 0}
      * @return {Object} hsv {h: 0, s: 0, v: 0}
      */
-    color.Color.rgb2hsv = function (rgb) {
+    color.Converter.rgb2hsv = function (rgb) {
         var rr, gg, bb,
         r = rgb.r,
         g = rgb.g,
@@ -95,7 +96,7 @@
      * @param {Object} hsv {h: 0, s: 0, v: 0}
      * @return {Object} rgb {r: 0, g: 0, b: 0}
      */
-    color.Color.hsv2rgb = function (hsv) {
+    color.Converter.hsv2rgb = function (hsv) {
         h = hsv.h;
         s = hsv.s;
         v = hsv.v;
