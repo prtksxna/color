@@ -3,6 +3,7 @@
     /**
      * @class color.Interface
      * Manages all interface events
+     * @singleton
      */
     color.Interface = {};
 
@@ -11,21 +12,19 @@
      * Initialize the interface
      */
     color.Interface.init = function () {
+        // Resize UI and bind event
+        this.resize();
+        $(window).on("resize", color.Interface.resize);
+
         // Initialize with a color
-        var color = this.startColors[Math.floor(Math.random() * 5)];
-        this.updateColor(color, $("#color"), $("#hex"));
-        this.Picker.hsv = this.converter.rgb2hsv(
-            this.converter.hex2rgb(color)
+        var c = color.startColors[Math.floor(Math.random() * 5)];
+        color.updateColor(c, $("#color"), $("#hex"));
+        color.Picker.hsv = color.Converter.rgb2hsv(
+            color.Converter.hex2rgb(c)
         );
 
-        // Resize UI and bind event
-        this.resizeInterface();
-        $(window).on("resize", function () {
-            color.resizeInterface();
-        });
-
         $("#combo").hide();
-        $("#color").on("click", color.Interface..evColorClick);
+        $("#color").on("click", color.Interface.evColorClick);
         $("#combo > div").on("click", color.Interface.evComboClick);
     }
 
@@ -65,8 +64,8 @@
         $("#color").hide();
         $("#combo").show();
 
-        color.mode = "combo";
-        colorGyro.resetCalibration();
+        color.mode = "palette";
+        color.Gyro.resetCalibration();
         color.Palette.updatePalette();
     }
 
@@ -75,22 +74,22 @@
      */
     color.Interface.evComboClick = function () {
         color.Gyro.resetCalibration();
-        var color = $(this).css("backgroundColor") + "";
-        color = color.substring(4, color.length -1).split(", ");
-        color = {
-            r: +color[0],
-            g: +color[1],
-            b: +color[2]
+        var c = $(this).css("backgroundColor") + "";
+        c = c.substring(4, c.length -1).split(", ");
+        c = {
+            r: +c[0],
+            g: +c[1],
+            b: +c[2]
         };
 
         $("#color").show();
         $("#combo").hide();
 
-        color.Picker.hsv = color.Converter.rgb2hsv(color);
+        color.Picker.hsv = color.Converter.rgb2hsv(c);
         color.Palette.hsvGap = {h:0, s:0,v:0};
-        color.mode = "color";
+        color.mode = "picker";
         color.updateColor(
-            color.Converter.rgb2hex(color),
+            color.Converter.rgb2hex(c),
             $("#color"),
             $("hex")
         );

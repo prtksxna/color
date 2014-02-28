@@ -11,19 +11,19 @@
      * @property {Number} speed
      * The speed at which the gap increases
      */
-    color.Picker.speed = 0.00025;
+    color.Palette.speed = 0.00025;
 
     /**
      * @property {Number} limit
      * The maximum acceptable gap
      */
-    color.Picker.gap = 0.3;
+    color.Palette.limit = 0.3;
 
     /**
      * @property {Object} hsvGap
      * The gap between the colors
      */
-    color.Picker.hsvGap = {h: 0, s: 0, v: 0};
+    color.Palette.hsvGap = {h: 0, s: 0, v: 0};
 
 
     /**
@@ -47,7 +47,7 @@
      * @param {String} p The property h/s/v that will change
      * @param {String} s The amount the property will change
      */
-    color.Pallete.changeGap = function (p, s) {
+    color.Palette.changeGap = function (p, s) {
         this.hsvGap[p] = this.hsvGap[p] + s;
         this.hsvGap[p] = (this.hsvGap[p] >= this.limit) ? this.limit : this.hsvGap[p];
         this.hsvGap[p] = (this.hsvGap[p] <= -this.limit) ? -this.limit : this.hsvGap[p];
@@ -65,7 +65,7 @@
 
         color.updateColor(
             color.Converter.rgb2hex(
-                color.Converter.hsv2rgb(this.hsv)
+                color.Converter.hsv2rgb(color.Picker.hsv)
             ),
             $(p[2]),
             $(p[2]).find("p")
@@ -84,9 +84,9 @@
      */
     color.Palette.computePalette = function (diff) {
         var hsv = {
-            h: this.hsv.h,
-            s: this.hsv.s,
-            v: this.hsv.v
+            h: color.Picker.hsv.h,
+            s: color.Picker.hsv.s,
+            v: color.Picker.hsv.v
         };
 
         hsv.h = (hsv.h + (this.hsvGap.h * diff)) % 1;

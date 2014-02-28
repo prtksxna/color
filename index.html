@@ -1,15 +1,10 @@
+
 <!doctype html5>
 <html>
   <head>
     <title>Color</title>
 
     <link rel="stylesheet" type="text/css" href="src/css/master.css">
-
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/gyro.min.js"></script>
-    <script src="src/js/control.js"></script>
-    <script src="src/js/picker.js"></script>
-    <script src="src/js/ui.js"></script>
   </head>
 
   <body>
@@ -30,6 +25,21 @@
 	Tap to pick another color.
       </p>
     </section>
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/gyro.min.js"></script>
+    <script src="src/js/color.base.js"></script>
+    <script src="src/js/color.converter.js"></script>
+    <script src="src/js/color.gyro.js"></script>
+    <script src="src/js/color.interface.js"></script>
+    <script src="src/js/color.palette.js"></script>
+    <script src="src/js/color.picker.js"></script>
+
+    <script>
+      $(function(){
+      color.init();
+      });
+    </script>
 
   </body>
 </html>

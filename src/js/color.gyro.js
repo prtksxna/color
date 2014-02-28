@@ -69,8 +69,8 @@
             color.Picker.checkGyro("gamma", "v", o);
 
             color.updateColor(
-                color.Converterrgb2hex(
-                    color.Converterhsv2rgb(this.hsv)
+                color.Converter.rgb2hex(
+                    color.Converter.hsv2rgb(color.Picker.hsv)
                 ),
                 $("#color"),
                 $("#hex")

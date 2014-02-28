@@ -28,10 +28,10 @@
      * @param {String} p Which one of h/s/v will this affect
      * @param {Object} o The gyroscope object
      */
-    color.Picker.checkGryo = function (a, p, o) {
+    color.Picker.checkGyro = function (a, p, o) {
         if(Math.abs(o[a] - color.Gyro[a]) > color.angleThreshold){
             if((o[a] - color.Gyro[a]) < 0) this.changeColor(p, this.speed);
-            if((o[a] - color.Gyro[a]) > 0) this.chaneColor(p, -this.speed);
+            if((o[a] - color.Gyro[a]) > 0) this.changeColor(p, -this.speed);
         }
     }
 

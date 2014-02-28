@@ -28,7 +28,7 @@
      * @property {Number} angleThreshold
      * The threshold after which the color changes
      */
-    color.Picker.angleThreshold = 12;
+    color.angleThreshold = 12;
 
     /**
      * @method updateColor
