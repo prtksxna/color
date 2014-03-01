@@ -54,3 +54,39 @@ body{
     height: 100%;
     font-size: 3em;
 }
+
+
+#menu {
+    background: green;
+    padding: 0;
+    margin: 0;
+}
+
+#menu h1{
+    display: block;
+    background: purple;
+    height: 33%;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    list-style: none;
+    display: block;
+    height: 67%;
+}
+
+#menu ul li {
+    display: block;
+    height: 50%;
+    background: red;
+}
+
+#menu ul li a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}

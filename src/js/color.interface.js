@@ -14,7 +14,9 @@
     color.Interface.init = function () {
         // Resize UI and bind event
         this.resize();
-        $(window).on("resize", color.Interface.resize);
+        $(window).on("resize", function () {
+            color.Interface.resize();
+        });
 
         // Initialize with a color
         var c = color.startColors[Math.floor(Math.random() * 5)];
@@ -23,7 +25,7 @@
             color.Converter.hex2rgb(c)
         );
 
-        $("#combo").hide();
+        $("#combo, #color").hide();
         $("#color").on("click", color.Interface.evColorClick);
         $("#combo > div").on("click", color.Interface.evComboClick);
     }
@@ -35,7 +37,7 @@
     color.Interface.resize = function () {
         var h = $(window).height();
         var w = $(window).width();
-
+        console.log(h);
         var h_hex = w/4;
         var w_hex = w/4;
 
@@ -54,11 +56,11 @@
             .height(h)
             .width(w);
 
-        $("#combo > div >p").css("lineHeight", h/5 + "px");
+        $("#combo > div > p").css("lineHeight", h/5 + "px");
     }
 
     /**
-     * @method evColorClick
+     * @event evColorClick
      */
     color.Interface.evColorClick = function () {
         $("#color").hide();
@@ -70,7 +72,7 @@
     }
 
     /**
-     * @method evComboClick
+     * @event evComboClick
      */
     color.Interface.evComboClick = function () {
         color.Gyro.resetCalibration();
