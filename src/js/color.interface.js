@@ -26,8 +26,9 @@
         );
 
         $("#combo, #color").hide();
-        $("#color").on("click", color.Interface.evColorClick);
-        $("#combo > div").on("click", color.Interface.evComboClick);
+        $("#color").on("click", color.Interface.colorClick);
+        $("#combo > div").on("click", color.Interface.comboClick);
+        $("#menu_picker").on("click", color.Interface.menuPickerClick);
     }
 
     /**
@@ -37,7 +38,7 @@
     color.Interface.resize = function () {
         var h = $(window).height();
         var w = $(window).width();
-        console.log(h);
+
         var h_hex = w/4;
         var w_hex = w/4;
 
@@ -50,6 +51,8 @@
             "borderRadius": h_hex + "px"
         });
 
+        $("#menu >  h1, #menu > ul > li > a").css("lineHeight", h/3 + "px");
+
         $("body").css("fontSize", h/100 + "px");
 
         $("#menu, #color, #combo")
@@ -60,9 +63,9 @@
     }
 
     /**
-     * @event evColorClick
+     * @event colorClick
      */
-    color.Interface.evColorClick = function () {
+    color.Interface.colorClick = function () {
         $("#color").hide();
         $("#combo").show();
 
@@ -72,9 +75,9 @@
     }
 
     /**
-     * @event evComboClick
+     * @event comboClick
      */
-    color.Interface.evComboClick = function () {
+    color.Interface.comboClick = function () {
         color.Gyro.resetCalibration();
         var c = $(this).css("backgroundColor") + "";
         c = c.substring(4, c.length -1).split(", ");
@@ -95,6 +98,14 @@
             $("#color"),
             $("hex")
         );
+    }
+
+    /**
+     * @event menuPickerClick
+     */
+    color.Interface.menuPickerClick = function () {
+        $("#menu").hide();
+        $("#color").show();
     }
 
 })(color, jQuery);
