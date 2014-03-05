@@ -25,10 +25,9 @@
             color.Converter.hex2rgb(c)
         );
 
-        $("#combo, #color").hide();
+        $("#combo").hide();
         $("#color").on("click", color.Interface.colorClick);
         $("#combo > div").on("click", color.Interface.comboClick);
-        $("#menu_picker").on("click", color.Interface.menuPickerClick);
     }
 
     /**
@@ -39,8 +38,8 @@
         var h = $(window).height();
         var w = $(window).width();
 
-        var h_hex = w/4;
-        var w_hex = w/4;
+        var h_hex = w/2;
+        var w_hex = w/2;
 
         $("#hex").css({
             "top": ((h/2) - (h_hex/2)) + "px",
@@ -98,14 +97,6 @@
             $("#color"),
             $("hex")
         );
-    }
-
-    /**
-     * @event menuPickerClick
-     */
-    color.Interface.menuPickerClick = function () {
-        $("#menu").hide();
-        $("#color").show();
     }
 
 })(color, jQuery);

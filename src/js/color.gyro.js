@@ -64,7 +64,7 @@
      */
     color.Gyro.move = function (o) {
         if(color.mode === "picker"){
-            color.Picker.checkGyro("beta", "h", o);
+            color.Picker.checkGyro("alpha", "h", o);
             color.Picker.checkGyro("beta", "s", o);
             color.Picker.checkGyro("gamma", "v", o);
 
@@ -77,7 +77,7 @@
             );
 
         }else if(color.mode === "palette") {
-            color.Palette.checkGyro("beta", "h", o);
+            color.Palette.checkGyro("alpha", "h", o);
             color.Palette.checkGyro("beta", "s", o);
             color.Palette.checkGyro("gamma", "v", o);
 

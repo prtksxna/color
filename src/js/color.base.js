@@ -41,9 +41,6 @@
     color.updateColor = function (color, $el, $p) {
         $el.css("background", color);
         $p.text(color)
-        if($p.attr("id") === "hex"){
-            $p.css("color", color);
-        }
     }
 
     /**

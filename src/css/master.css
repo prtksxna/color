@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     text-align: center;
-    font-family: 'roboto_condensedbold', Helvetica, Arial, Verdana, sans-serif;
+    font-family: 'roboto_condensedlight', Helvetica, Arial, Verdana, sans-serif;
 }
 
 #combo, #color{
@@ -14,7 +14,8 @@ body{
     display: block;
     width: 150px;
     height: 150px;
-    background: #fff;
+    background: #transparent;
+    border: 4px solid #fff;
     text-align: center;
     line-height: 150px;
     text-transform: uppercase;
@@ -23,6 +24,7 @@ body{
     box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
     text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
     font-size: 4em;
+    color: #fff;
 }
 
 #color >  p, #combo > p{
@@ -35,13 +37,14 @@ body{
     color: #fff;
     text-shadow: 0px 0px 5px black;
     opacity: 0.5;
-    font-size: 2em;
+    font: 2em 'robotoregular', Helvetica, Arial, Verdana, sans-serif;
 }
 
 #combo div{
     height: 20%;
     margin: 0;
     padding: 0;
+    border-bottom: 1px solid #fff;
 }
 
 #combo > div > p{
