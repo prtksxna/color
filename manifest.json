@@ -14,14 +14,14 @@
     },
 
     "icons": {
-        "16": "assets/icon16.png"
-        "36": "assets/icon36.png"
-        "48": "assets/icon48.png"
-        "57": "assets/icon57.png"
-        "72": "assets/icon72.png"
-        "96": "assets/icon96.png"
-        "114": "assets/icon114.png"
-        "128": "assets/icon128.png"
-        "144": "assets/icon144.png"
+        "16": "assets/icon16.png",
+        "36": "assets/icon36.png",
+        "48": "assets/icon48.png",
+        "57": "assets/icon57.png",
+        "72": "assets/icon72.png",
+        "96": "assets/icon96.png",
+        "114": "assets/icon114.png",
+        "128": "assets/icon128.png",
+        "144": "assets/icon144.png",
     }
 }
